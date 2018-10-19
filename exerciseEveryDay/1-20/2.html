@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+  var addTwoNumbers = function(l1, l2) {
+    console.log(l1.reverse().toString())
+    let num1 = l1.reverse().join('') - 0
+    let num2 = l2.reverse().join('') - 0
+
+    return (num1 + num2 + '').split('').reverse().map(item => Number(item))
+  };
+
+
+  console.log(addTwoNumbers([2,4,3],[5,6,4]))
+</script>
+</html>

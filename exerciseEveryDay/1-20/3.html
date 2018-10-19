@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+  var lengthOfLongestSubstring = function(s) {
+    let str = s.split('')
+    let arr = []
+
+    for(let i = 0;i < str.length;i++){
+      let newStr = ''
+      for (let j = i; j < str.length; j++) {
+        if(!newStr.includes(str[j])){
+          newStr += str[j]
+          arr.push(newStr.length)
+        }else{
+          break;
+        }
+      }
+    }
+
+    return arr.sort((a,b) => b-a)[0]
+  }
+
+</script>
+</html>
