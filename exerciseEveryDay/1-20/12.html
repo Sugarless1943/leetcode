@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+  var intToRoman = function(num) {
+    if(num >= 1 && num<=3999) {
+      let str = (num + '').split('')
+      console.log(str)
+      let location = 1
+      for(let i=str.length-1;i>=0;i--){
+        switch (location) {
+          case 1:
+            if(str[i] < 4){
+              str[i] = makeIs(str[i],'I')
+            }else if(str[i] == 4){
+              str[i] = 'IV'
+            }else if(str[i] > 4 && str[i] < 9){
+              str[i] = 'V'+makeIs(str[i]-5,'I')
+            }else {
+              str[i] = 'IX'
+            }
+            break
+          case 2:
+            if(str[i] < 4){
+              str[i] = makeIs(str[i],'X')
+            }else if(str[i] == 4){
+              str[i] = 'XL'
+            }else if(str[i] > 4 && str[i] < 9){
+              str[i] = 'L'+makeIs(str[i]-5,'X')
+            }else {
+              str[i] = 'XC'
+            }
+            break
+          case 3:
+            if(str[i] < 4){
+              str[i] = makeIs(str[i],'C')
+            }else if(str[i] == 4){
+              str[i] = 'CD'
+            }else if(str[i] > 4 && str[i] < 9){
+              str[i] = 'D'+makeIs(str[i]-5,'C')
+            }else {
+              str[i] = 'CM'
+            }
+            break
+          case 4:
+            str[i] = makeIs(str[i],'M')
+            break
+        }
+
+        location++
+      }
+
+      function makeIs(num,str){
+        let res = ''
+        for(let i=0;i<num;i++){
+          res += str
+        }
+        return res
+      }
+
+      return str.join('')
+    }
+  };
+
+  console.log(intToRoman(1))
+</script>
+</html>
