@@ -7,4 +7,59 @@
 <body>
 
 </body>
+<script>
+  var longestPalindrome = function(s) {
+    let str = s.split('')
+    let result = []
+
+    for(let i=0;i<str.length;i++){
+      if(str[i+2] && (str[i] == str[i+2] && str[i] != str[i+1]) || (str[i] == str[i+2] && str[i] == str[i+1])){   //回文情况
+        let length = str.length-(i+1) >= i+1 ? i+1 : str.length-(i+1)
+        let baseStr = [str[i+1]]
+        for(let j=0;j<length;j++){
+          if(str[i+2+j] == str[i-j]){
+            baseStr.push(str[i+2+j])
+            baseStr.unshift(str[i-j])
+          }else {
+            break
+          }
+        }
+        result.push(baseStr)
+      }else if(str[i+2] && str[i] == str[i+1] && str[i-1] == str[i+2]){
+        let length = str.length-1-(i+1) >= i ? i : str.length-1-(i+1)
+        let baseStr = [str[i],str[i+1]]
+        for(let j=0;j<length;j++){
+          if(str[i+2+j] == str[i-1-j]){
+            baseStr.push(str[i+2+j])
+            baseStr.unshift(str[i-1-j])
+          }else {
+            break
+          }
+        }
+
+        result.push(baseStr)
+      }else {
+        //只有两位，不是回文的情况
+        let baseStr = [str[i]]
+        for(let j=0;j<str.length-1-i;j++){
+          if(str[i] == str[i+1+j]){
+            baseStr.push(str[i])
+          }else {
+            break;
+          }
+        }
+        result.push(baseStr)
+
+      }
+    }
+    console.log(result)
+
+    return result.length > 0 ? result.sort((a,b) => b.length-a.length)[0].join('') : ''
+
+  }
+
+
+
+  longestPalindrome("csooosb")
+</script>
 </html>
