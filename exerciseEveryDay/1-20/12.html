@@ -11,7 +11,6 @@
   var intToRoman = function(num) {
     if(num >= 1 && num<=3999) {
       let str = (num + '').split('')
-      console.log(str)
       let location = 1
       for(let i=str.length-1;i>=0;i--){
         switch (location) {
