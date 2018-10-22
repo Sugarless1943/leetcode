@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+  var maxArea = function(height) {
+    if(height.length>1){
+      let result = 0
+      for(let i=0;i<height.length-1;i++){
+        for(let j=i+1;j<height.length;j++){
+          let h = height[i] > height[j] ? height[j] : height[i]
+          let w = j-i
+
+          result = h*w > result ? h*w : result
+        }
+      }
+
+      return result
+    }else {
+      return 0
+    }
+  };
+
+  console.log(maxArea([1,8,6,2,5,4,8,3,7]))
+
+</script>
+</html>
