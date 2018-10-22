@@ -13,7 +13,7 @@
     let result = []
 
     for(let i=0;i<str.length;i++){
-      if(str[i+2] && (str[i] == str[i+2] && str[i] != str[i+1]) || (str[i] == str[i+2] && str[i] == str[i+1])){   //回文情况
+      if(str[i+2] && str[i] == str[i+2] && str[i] != str[i+1]){   //回文情况
         let length = str.length-(i+1) >= i+1 ? i+1 : str.length-(i+1)
         let baseStr = [str[i+1]]
         for(let j=0;j<length;j++){
@@ -60,6 +60,6 @@
 
 
 
-  longestPalindrome("csooosb")
+  longestPalindrome("sooos")
 </script>
 </html>
