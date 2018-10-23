@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+  var romanToInt = function(s) {
+    let res = []
+    let str = s.split('')
+
+    setNum('I','V','X')
+    setNum('X','L','C')
+    setNum('C','D','M')
+    res.unshift(manyField('M',true))
+
+    function setNum(a,b,c){
+      if(s.includes(a) || s.includes(b)){   //个位
+        if(s.includes(a) && !s.includes(b) && !s.includes(a+c)){
+          res.unshift(manyField(a))
+        }else if(s.includes(a+b)){
+          res.unshift(4)
+          str.splice((s).indexOf(a+b),2)
+        }else if(!s.includes(a) && s.includes(b)){
+          res.unshift(5)
+        }else if(s.includes(a+c)){
+          res.unshift(9)
+          str.splice((s).indexOf(a+c),2)
+        }else {
+          res.unshift(5 + manyField(a))
+        }
+      }else {
+        res.unshift(0)
+      }
+    }
+
+    function manyField(f,flag){
+      let num = 0
+      for(let i=0;i<str.length;i++){
+        if(str[i] == f){
+          num ++
+        }else {
+          if(flag) break
+        }
+      }
+      return num
+    }
+
+    return res.length > 0 ? res.join('')-0 : 0
+  };
+
+  console.log(romanToInt('MDLXX'))
+
+</script>
+</html>
