@@ -9,22 +9,27 @@
 </body>
 <script>
   var lengthOfLongestSubstring = function(s) {
-    let str = s.split('')
-    let arr = []
+    if(s != ''){
+      let str = s.split('')
+      let arr = []
 
-    for(let i = 0;i < str.length;i++){
-      let newStr = ''
-      for (let j = i; j < str.length; j++) {
-        if(!newStr.includes(str[j])){
-          newStr += str[j]
-          arr.push(newStr.length)
-        }else{
-          break;
+      for(let i = 0;i < str.length;i++){
+        let newStr = ''
+        for (let j = i; j < str.length; j++) {
+          if(!newStr.includes(str[j])){
+            newStr += str[j]
+            arr.push(newStr.length)
+          }else{
+            break;
+          }
         }
       }
+
+      return arr.sort((a,b) => b-a)[0]
+    }else {
+      return 0
     }
 
-    return arr.sort((a,b) => b-a)[0]
   }
 
 </script>
