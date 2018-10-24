@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+  var threeSum = function(nums) {
+    let res = []
+    for(let i=0;i<nums.length;i++){
+      let first = nums[i]
+      for(let j=0;j<nums.length;j++){
+        if(j != i){
+          let second = nums[j]
+          for(let k=0;k<nums.length;k++){
+            if(k != i && k != j){
+              let third = nums[k]
+              if(first + second + third == 0){
+                res.push([first,second,third])
+              }
+            }
+          }
+        }
+      }
+      nums.splice(i,1)
+      i--
+    }
+
+    //去重
+    (function clean(res){
+      for(let i=0;i<res.length;i++){
+        for(let j=i+1;j<res.length;j++){
+          if(theSame([...res[i]],[...res[j]])){
+            res.splice(i,1)
+            clean(res)
+          }
+        }
+      }
+    })(res)
+
+    function theSame(a,b){
+      let num = 0
+      for(let i=0;i<3;i++){
+        let len = 3
+        for(let j=0;j<len;j++){
+          if(a[i] == b[j]){
+            num++
+            b.splice(j,1)
+            len--
+          }
+        }
+      }
+      return num == 3
+    }
+
+    return res
+  };
+
+  console.log(threeSum([-9,1,-6,-4,-4,0,-1,2,-6,5,6,-9,-10,-8,0,9,-6,4,-8,6,4,1,-10,-1,-9,-9,5,-4]))
+
+</script>
+</html>
