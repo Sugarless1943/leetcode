@@ -12,7 +12,7 @@
     if (nums.length < 3){
       return []
     }else if(nums.length == 3) {
-      if(nums[0] + nums[1] + nums[2] == 0){
+      if(sum(nums) == 0){
         return [nums]
       }else {
         return []
@@ -20,15 +20,13 @@
     }else {
       let res = []
       for(let i=0;i<nums.length;i++){
-        let first = nums[i]
         for(let j=0;j<nums.length;j++){
           if(j != i){
-            let second = nums[j]
             for(let k=0;k<nums.length;k++){
               if(k != i && k != j){
-                let third = nums[k]
-                if(first + second + third == 0){
-                  res.push([first,second,third])
+                let now = [nums[i],nums[j],nums[k]]
+                if(sum(now) == 0){
+                  res.push(now)
                 }
               }
             }
@@ -70,6 +68,14 @@
           }
         }
         return num == 3
+      }
+
+      function sum(nums){
+        let sum = 0
+        for(let i=0;i<nums.length;i++){
+          sum += nums[i]
+        }
+        return sum
       }
 
       return res
