@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+  var convert = function(s, numRows) {
+    let node = numRows + (numRows-2)
+    let times = Math.floor(s.length/node)*(node-numRows+1)
+    if(s.length%node != 0){
+      if(s.length%node <= numRows) {
+        times++
+      }else {
+        times += s.length%node - numRows + 1
+      }
+    }
+
+    let res = []
+    let num = 0
+    let num2 = 0
+    let flag = false
+    if(times > 1){
+      for(let i=0;i<times;i++){
+        let arr = []
+        for(let j=0;j<numRows;j++){
+          flag = false
+          if(i%(numRows-1) == 0){
+            num = i
+            arr.push(s.charAt(i*2+j))
+            num2 = (i*2+j+1)
+          }else {
+            arr.push("")
+            flag = true
+          }
+        }
+        if(flag){
+          arr[numRows-1-i+num] = s.charAt(i-num+num2-1)
+        }
+        res.push(arr)
+      }
+    }else {
+      return s
+    }
+
+    let str = ''
+    for(let i=0;i<numRows;i++){
+      for(let j=0;j<res.length;j++){
+        str += res[j][i]
+      }
+    }
+
+    return str
+  };
+
+  console.log(convert('ABCDE',4))
+</script>
+</html>
