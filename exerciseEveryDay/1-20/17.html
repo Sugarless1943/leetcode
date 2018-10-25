@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+  var letterCombinations = function(digits) {
+    const phone = {
+      '2': ['a','b','c'],
+      '3': ['d','e','f'],
+      '4': ['g','h','i'],
+      '5': ['j','k','l'],
+      '6': ['m','n','o'],
+      '7': ['p','q','r','s'],
+      '8': ['t','u','v'],
+      '9': ['w','x','y','z']
+    }
+
+    let arr = digits.split('').map(item => {
+      return phone[item]
+    })
+
+    if(arr.length > 0){
+      let base = arr[0]
+      for(let i=0;i<arr.length-1;i++){
+        if(arr[i+1]) {
+          base = merge(base,arr[i+1])
+        }
+      }
+      return base
+    }else {
+      return []
+    }
+
+    function merge(a,b){
+      let res = []
+      for(let i=0;i<a.length;i++){
+        let str = a[i]
+        for(let j=0;j<b.length;j++){
+          str += b[j]
+          res.push(str)
+          str = a[i]
+        }
+      }
+
+      return res
+    }
+
+  };
+
+
+  letterCombinations('4')
+</script>
+</html>
