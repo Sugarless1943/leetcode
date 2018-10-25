@@ -8,12 +8,13 @@
 
 </body>
 <script>
-  var addTwoNumbers = function(l1, l2) {
-    console.log(l1.reverse().toString())
-    let num1 = l1.reverse().join('') - 0
-    let num2 = l2.reverse().join('') - 0
+  function ListNode(val) {
+    this.val = val;
+    this.next = null;
+  }
 
-    return (num1 + num2 + '').split('').reverse().map(item => Number(item))
+  var addTwoNumbers = function(l1, l2) {
+
   };
 
 
