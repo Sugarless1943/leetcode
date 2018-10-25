@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+  var isValid = function(s) {
+    let strArr = s.split('')
+
+    function clean(res){
+      for(let i=0;i<res.length;i++){
+        if(next(res[i],i,res)){
+          res.splice(i,2)
+          clean(res)
+        }
+      }
+    }
+
+    clean(strArr)
+
+    return strArr.length == 0
+
+    //对比相邻
+    function next(str,index,arr){
+      if(str == '('){
+        return ')' == arr[index+1]
+      }
+      if(str == '['){
+        return ']' == arr[index+1]
+      }
+      if(str == '{'){
+        return '}' == arr[index+1]
+      }
+    }
+  }
+
+  console.log(isValid('()'))
+
+</script>
+</html>

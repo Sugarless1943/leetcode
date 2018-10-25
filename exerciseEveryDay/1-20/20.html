@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+  var isValid = function(s) {
+    if(s){
+      if(next('(') || next('[') || next('{')){
+
+
+
+
+
+
+
+
+
+      }else {
+        return false
+      }
+    }else {
+      return true
+    }
+
+
+    //对比相邻
+    function next(str){
+      if(s.includes(str) && str == '('){
+        return ')' == s.charAt(s.indexOf(str)+1)
+      }
+      if(s.includes(str) && str == '['){
+        return ']' == s.charAt(s.indexOf(str)+1)
+      }
+      if(s.includes(str) && str == '{'){
+        return '}' == s.charAt(s.indexOf(str)+1)
+      }
+    }
+  };
+
+  console.log(isValid('()[]{}'))
+</script>
+</html>
