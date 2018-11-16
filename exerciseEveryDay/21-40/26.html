@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+  var removeDuplicates = function(nums) {
+    (function clean(arr) {
+      if(nums.length <= 1){
+        return nums
+      }else {
+        for(let i=0;i<arr.length;i++){
+          for(let j=i+1;j<arr.length;j++){
+            if(arr[i] == arr[j]){
+              arr.splice(j,1)
+              clean(arr)
+            }
+          }
+        }
+      }
+
+    })(nums)
+
+
+    console.log(nums)
+    return nums
+  };
+
+
+  removeDuplicates([1,1,2])
+</script>
+</html>
