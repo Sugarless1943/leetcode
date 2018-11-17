@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+  var isValidSudoku = function(board) {
+
+    let [flag1,flag2,flag3] = [false,false,false]
+
+    //数组比较
+    function arrCompare(arr) {
+      let reg = /^[1-9]{1}$/
+
+      let operationArr = []
+      arr.forEach(item => {
+        if(item == '.' || reg.test(item)){
+          if(reg.test(item)){
+            operationArr.push(item)
+          }
+        }else {
+          return false
+        }
+      })
+
+      for(let i=0;i<operationArr.length;i++){
+        let a = [...operationArr]
+        a.splice(i,1)
+        if(a.indexOf(operationArr[i]) > -1){
+          return false
+        }
+      }
+
+      return true
+    }
+
+    //返回结果
+    function toRes(arr){
+      for(let i=0;i<arr.length;i++){
+        if(!arrCompare(arr[i])){
+          return false
+        }
+      }
+
+      return true
+    }
+
+    //横向比较
+    flag1 = toRes(board)
+
+    //纵向比较
+    let col = []
+    for(let i=0;i<9;i++){
+      let arr = []
+      for (let j=0;j<9;j++){
+        arr.push(board[j][i])
+      }
+      col.push(arr)
+    }
+    flag2 = toRes(col)
+
+    //九宫格比较
+    let row3 = [[],[],[]]
+    for(let i=0;i<board.length;i++) {
+      if (i < 3) {
+        row3[0].push(board[i])
+      }else if( i >=3 && i <=5 ) {
+        row3[1].push(board[i])
+      }else {
+        row3[2].push(board[i])
+      }
+    }
+
+    let block9 = []
+    function toBlock(arr){
+      let res = [[],[],[]]
+      for(let i=0;i<arr.length;i++){
+        for(let j=0;j<arr[i].length;j++){
+          if (j < 3) {
+            res[0].push(arr[i][j])
+          }else if( j >=3 && j <=5 ) {
+            res[1].push(arr[i][j])
+          }else {
+            res[2].push(arr[i][j])
+          }
+        }
+      }
+      return res
+    }
+
+    for(let i=0;i<row3.length;i++){
+      block9 = block9.concat(toBlock(row3[i]))
+    }
+
+    flag3 = toRes(block9)
+
+    return flag1 && flag2 && flag3
+  };
+
+
+
+    console.log(isValidSudoku(
+      [ [".",".","4",".",".",".","6","3","."],
+        [".",".",".",".",".",".",".",".","."],
+        ["5",".",".",".",".",".",".","9","."],
+        [".",".",".","5","6",".",".",".","."],
+        ["4",".","3",".",".",".",".",".","1"],
+        [".",".",".","7",".",".",".",".","."],
+        [".",".",".","5",".",".",".",".","."],
+        [".",".",".",".",".",".",".",".","."],
+        [".",".",".",".",".",".",".",".","."]]
+    ))
+
+
+</script>
+</html>
