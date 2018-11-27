@@ -13,12 +13,9 @@
    */
 
   var firstMissingPositive = function(nums) {
-
     let arr = nums.filter(item => {
       return typeof item === 'number' && item%1 === 0 && item >= 0
     }).sort((a,b) => a-b)
-
-    console.log(arr)
 
     if(arr[0] > 1){
       return 1
