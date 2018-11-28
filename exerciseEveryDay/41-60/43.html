@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+  /**
+   * 乘法运算，直接给出字符串
+   * @param num1
+   * @param num2
+   */
+
+  var multiply = function(num1, num2) {
+
+    //一位数乘法
+    function multiplyOne(n1,n2) {
+      let res = 0
+      let str1 = n1.split('').map(item => item - 0).reverse()
+      // for(let i=0;i<str1.length;i++){
+      //     res += str1[i] * n2 * (i > 0 ? Math.pow(10, i) : 1)
+      // }
+      //
+      // return res
+    }
+
+    //数组字符串相加
+    function strAdd(s1,s2) {
+      s1 = s1.split('').map(item => item - 0)
+      s2 = s2.split('').map(item => item - 0)
+
+      let c = s1.length >= s2.length ? s1.length - s2.length : s2.length - s1.length
+      let len = s1.length >= s2.length ? s1.length : s2.length
+      for(let i=0;i<c;i++){
+        s1.length > s2.length ? s2.unshift(0) : s1.unshift(0)
+      }
+      let res = []
+      for(let i=len-1;i>=0;i--){
+        let r = s1[i] + s2[i]
+        if(r >= 10){
+          res.unshift(r - 10)
+          if(s1[i-1]){
+            s1[i-1]++
+          }else {
+            res.unshift(1)
+          }
+        }else {
+          res.unshift(r)
+        }
+      }
+      return res.join('')
+    }
+
+    // console.log(multiplyOne(num1,2),11)
+    // strAdd('123','13')
+    console.log(strAdd('123','883'))
+  };
+
+  multiply('12311111111111111111111111111','321')
+
+
+
+</script>
+</html>
