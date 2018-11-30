@@ -38,6 +38,17 @@
      * l1.next.next = new ListNode(3)
      */
     console.log(res)
+    //通过数组生成链表
+    let a = new ListNode(0)
+    let q = a
+    for(let i=0;i<res.length;i++) {
+      q.val = res[i]
+      if(res[i+1] || res === 0){
+        q.next = new ListNode(0)
+        q = q.next
+      }
+    }
+    console.log(a)
 
 
     //解开链表
