@@ -8,28 +8,65 @@
 
 </body>
 <script>
+  /**
+   * Definition for singly-linked list.
+   * function ListNode(val) {
+   *     this.val = val;
+   *     this.next = null;
+   * }
+   * 输入：(2 -> 4 -> 3) + (5 -> 6 -> 4)
+   * 输出：7 -> 0 -> 8
+   * 原因：342 + 465 = 807
+   */
+  /**
+   * @param {ListNode} l1
+   * @param {ListNode} l2
+   * @return {ListNode}
+   */
   function ListNode(val) {
     this.val = val;
     this.next = null;
   }
 
   var addTwoNumbers = function(l1, l2) {
-    console.log(l1)
-    // let a = (l1.val).reverse().join('') - 0
-    // let b = (l2.val).reverse().join('') - 0
-    //
-    //
-    // let res = (a+b+'').split('').reverse()
-    //
-    // return res.map(item => {
-    //   return item-0
-    // })
+
+    let res = (open(l1) + open(l2) + '').split('').reverse().map(item => item - 0)
+
+    /**
+     * let l1 = new ListNode(2)
+     * l1.next = new ListNode(4)
+     * l1.next.next = new ListNode(3)
+     */
+    console.log(res)
+
+
+    //解开链表
+    function open(l) {
+      let arr = [l.val]
+
+      function o(l) {
+        if(l.next){
+          arr.push(l.next.val)
+          o(l.next)
+        }
+      }
+      o(l)
+
+      return arr.reverse().join('') - 0
+    }
   };
 
-  let a = new ListNode()
-  a.val = [2,4,3]
-  let b = new ListNode([5,6,4])
 
-  console.log(addTwoNumbers(a,b))
+
+  let l1 = new ListNode(2)
+  l1.next = new ListNode(4)
+  l1.next.next = new ListNode(3)
+
+  let l2 = new ListNode(5)
+  l2.next = new ListNode(6)
+  l2.next.next = new ListNode(4)
+
+  addTwoNumbers(l1, l2)
+
 </script>
 </html>
