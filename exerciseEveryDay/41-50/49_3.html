@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+  /**
+   * ["eat", "tea", "tan", "ate", "nat", "bat"]
+   * @param strs
+   */
+
+  var groupAnagrams = function(strs) {
+
+    let res = []
+
+    function pushWord(word) {
+      let arr = []
+      arr.push(word)
+      strs.splice(0,1)
+
+      if(strs.length > 0){
+        for(let i=0;i<strs.length;i++){
+          if(sameWord(strs[i],word)){
+            arr.push(strs[i])
+            strs.splice(i,1)
+            i--
+          }
+        }
+      }
+
+      res.push(arr)
+    }
+
+    while (strs.length > 0){
+      pushWord(strs[0])
+    }
+    return res
+
+    //判断两个字符串相等
+    function sameWord(str1,str2) {
+      let s1 = str1.split('').sort()
+      let s2 = str2.split('').sort()
+      return s1.join('') === s2.join('')
+    }
+  }
+
+  console.log(groupAnagrams(["nozzle","punjabi","waterlogged"]))
+</script>
+</html>

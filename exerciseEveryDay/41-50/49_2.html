@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+  /**
+   * ["eat", "tea", "tan", "ate", "nat", "bat"]
+   * @param strs
+   */
+
+  var groupAnagrams = function(strs) {
+    let obj = {}
+    for(let i=0;i<strs.length;i++) {
+      obj[strs[i]] = []
+    }
+    console.log(obj)
+    for(var i=0;i<26;i++){
+      // console.log(String.fromCharCode(97+i));//输出a-z 26个小写字母
+      let word = String.fromCharCode(97+i)
+      for(let j in obj){
+        let str = j.split('')
+        for(let k=0;k<str.length;k++) {
+          if(str[k] == word) {
+            obj[j][i] ++
+          }
+        }
+      }
+    }
+
+    console.log(obj)
+
+
+  }
+
+  groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"])
+</script>
+</html>

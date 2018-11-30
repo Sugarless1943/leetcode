@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+  /**
+   * ["eat", "tea", "tan", "ate", "nat", "bat"]
+   * @param strs
+   */
+
+  var groupAnagrams = function(strs) {
+    let res = []
+    function clean(word) {
+      let arr = [strs[0]]
+      strs.splice(0,1)
+      let reg = new RegExp('['+ word +']{'+ word.length +'}')
+      console.log(reg)
+      if(strs.length > 1){
+        for(let i=0;i<strs.length;i++){
+          if(reg.test(strs[i])){
+            arr.push(strs[i])
+            strs.splice(i,1)
+            i--
+          }
+        }
+      }
+
+      res.push(arr)
+    }
+
+    while (strs.length > 0) {
+      clean(strs[0])
+    }
+
+
+    console.log(res)
+    return res
+  };
+
+  groupAnagrams(["eat", "ate", "", "", "", 'aaaa'])
+</script>
+</html>

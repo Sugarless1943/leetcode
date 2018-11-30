@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+  /**
+   * ["eat", "tea", "tan", "ate", "nat", "bat"]
+   * @param strs
+   */
+
+  var groupAnagrams = function(strs) {
+
+    let obj = {}
+
+    for(let i=0;i<strs.length;i++) {
+      obj[strs[i]] = strs[i].split('').sort().join('')
+    }
+
+    console.log(obj,'obj')
+  }
+
+  console.log(groupAnagrams(["atta","atta","ate"]))
+</script>
+</html>
