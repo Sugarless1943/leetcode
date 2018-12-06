@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+  var lengthOfLastWord = function(s) {
+    if(s && (/\w+/).test(s)){
+      let arr = s.split(' ')
+      console.log(arr)
+      if(arr.includes('')){
+        return arr.filter(item => item).pop().length
+      }else {
+        return arr.pop().length
+      }
+    }
+    return 0
+  };
+
+
+  console.log(lengthOfLastWord(" a "))
+
+
+</script>
+</html>
